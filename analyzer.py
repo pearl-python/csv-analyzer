@@ -36,3 +36,17 @@ def show_category_summary(df):
 def add_total_column(df):
     df["total"] = df["price"] * df["quantity"]
     return df
+
+#高額注文の抽出
+def filter_high_value_orders(df, min_total):
+    filtered_df = df[df["total"] >= min_total]
+    return filtered_df
+
+#totalの降順ソート
+def sort_by_total(df):
+    sorted_df = df.sort_values("total", ascending=False)
+    return sorted_df
+
+#csvへ保存
+def save_csv(df, file_path):
+    df.to_csv(file_path, index=False)
