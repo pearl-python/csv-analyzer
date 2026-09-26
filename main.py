@@ -9,6 +9,11 @@ from analyzer import (
     filter_high_value_orders,
     sort_by_total,
     save_csv,
+    show_duplicate_orders,
+    remove_duplicate_orders,
+    convert_date_column,
+    add_date_columns,
+    show_monthly_summary
 )
 
 #csvを読み込む
@@ -27,6 +32,10 @@ show_status_counts(df)
 df = add_total_column(df)
 #dfのカテゴリごとのtotalを確認
 show_category_summary(df)
+#dateを日付型に変更
+df = convert_date_column(df)
+#dateから年月を取得
+df = add_date_columns(df)
 #10000以上のtotalを確認
 high_value_orders = filter_high_value_orders(df, 10000)
 print(high_value_orders)
@@ -35,3 +44,10 @@ high_value_orders = sort_by_total(high_value_orders)
 print(high_value_orders)
 #csvへ保存
 save_csv(high_value_orders, "sample/high_value_orders.csv")
+#重複行数確認
+show_duplicate_orders(df)
+#重複行を最新の日付以外排除
+df = remove_duplicate_orders(df)
+#月別の売上高
+show_monthly_summary(df)
+print(df)

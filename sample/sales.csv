@@ -4,3 +4,4 @@ order_id,date,category,product,price,quantity,status
 1003,2026-09-03,Book,Python Book,3500,1,pending
 1004,2026-09-04,PC,Monitor,30000,2,completed
 1005,2026-09-05,Book,SQL Book,,1,cancelled
+1002,2026-09-06,PC,Mouse,4000,2,completed
